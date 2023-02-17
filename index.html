@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>myCV</title>
+        <link href="./site.css" rel="stylesheet">
+        <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <script src="./encoded-ttf.js" defer></script>
+        <script src="./script.js" defer></script>
+    </head>
+    <body>
+        <header>
+
+        </header>
+        <main class="container">
+            <section class="userOutputsOuter">
+                <div class="userOutputsDecorator">
+                    <div class="userOutputs" id="deploy">
+                        <!-- Left column concerning the "details" content -->
+                        <div class="gridColOne">
+                            <div class="gridColOneMarginControl">
+                                <div class="imgContainer">                         
+                                    <img id="myImg" src="#" style="visibility: hidden;">
+                                </div>
+                                <h2 id="usernameOut">Your name</h2>
+                                <h3 id="outputDetailsTitle"></h3>
+                                <p id="outputDetailsKey"></p>
+                                <div class="lineController">
+                                    <div class="horizontalLineDetails"></div>
+                                </div>
+                                <div id="userOutputsDetailsDynamic">
+                                    <div id="userOutputsDetailsEnd"><h3>TEST :: LIMIT BORDER</h3></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Right column concerning the "main" content -->
+                        <div class="gridColTwo userOutputsSection">
+                            <div class="gridColTwoMarginControl">
+                                <p id="outputMainProfile"></p>
+                                <div class="lineController">
+                                    <div class="horizontalLineMain"></div>
+                                </div>  
+                                <h3 id="sectionOneOut">Section</h3>
+                                <div class="lineController">
+                                    <div class="horizontalLineMain"></div>
+                                </div>    
+                                <div id="userOutputsMainDynamic">
+                                    <div id="userOutputsMainEnd"><h3>TEST :: LIMIT BORDER</h3></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>    
+            </section>
+            
+            <section class="userInputs">
+                <div>
+                    <h1>Build Your Own CV!</h1>
+                    <h3>Start putting in your information below and see it appear on left. Press download when you're finished.</h3>
+                    
+                    <!-- First article concerning doc design -->
+                    <article class="userInputsDesign">
+                        <h2>Design</h2>
+                        <div class="miniBlock">
+                            <span>Select font: </span>
+                            <select id="fontSelect" onchange="changeFont(this)">
+                                <option value="Times New Roman" selected="selected">Times New Roman</option>
+                                <option value="Arial">Arial</option>
+                                <option value="Helvetica">Helvetica</option>
+                                <option value="Roboto Mono, monospace">Roboto Mono</option>
+                                <option value="Open Sans, sans-serif">Open Sans</option>
+                                <option value="Merriweather, serif">Merriweather</option>
+                                <option value="Sorts Mill Goudy, serif">Sorts Mill Goudy</option>
+                            </select>
+                        </div>
+                    </article>
+
+                    <!-- Second article concerning doc details (left column) -->
+                    <article class="userInputsDetails">
+                        <h2>Details</h2>
+                        <div class="miniBlock">
+                            <span>Start by making a good impression with a picture of yourself! Click below to upload:</span>
+                            <br>
+                            <input type='file' />
+                            <br>
+                            <span>(picture will be autoscaled if above 150px width or height)</span>
+                        </div>
+                        <div class="miniBlock">
+                            <input id="usernameIn" name="usernameIn" type="text" placeholder="Your name">
+                            <br>
+                            <br>
+                            <input id="inputDetailsTitle" name="inputDetailsTitle" type="test" placeholder="Your title (optional)">
+                            <br>
+                            <br>
+                            <textarea id="inputDetailsKey" placeholder="Add your details here (optional)" cols="30" rows="6"></textarea>
+                        </div>
+                        <div id="userInputsDetailsDynamic">
+                            <div id="userInputsDetailsEnd"></div>
+                        </div>
+                        <div class="miniBlock" id="userInputsDetailsSectionBtns">
+                            <button id="removeSectionDetailsBtn" disabled>
+                                <b>Remove section</b>
+                            </button>
+                            <button id="addSectionDetailsBtn">
+                                <b>Add section</b>
+                            </button>
+                        </div>
+                    </article>
+                    
+                    <!-- Third article concerning doc main (right column) -->
+                    <article class="userInputsMain">
+                        <h2>Main</h2>
+                        <div class="miniBlock">
+                            <textarea id="inputMainProfile" placeholder="Profile: Add something about yourself here (optional)" cols="60" rows="6"></textarea>
+                        </div>
+                        <div id="userInputsMainDynamic">
+                            <div id="userInputsMainEnd"></div>
+                        </div>
+                        <div class="miniBlock" id="userInputsMainSectionBtns">
+                            <button id="removeSectionMainBtn" disabled>
+                                <b>Remove section</b>
+                            </button>
+                            <button id="addSectionMainBtn">
+                                <b>Add section</b>
+                            </button>
+                        </div>
+                    </article>
+                    
+                    
+                    <br>
+                    <button id="downloadPdf">
+                        <b>Download PDF</b>
+                    </button>
+                </div>
+            </section>
+        </main>
+        <footer>
+
+        </footer>
+        
+    </body>
+</html>

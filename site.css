@@ -1,0 +1,280 @@
+/* Font styles downloaded from google-webfonts-helper at https://gwfh.mranftl.com/fonts */
+/* roboto-mono-regular - vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./fonts/roboto-mono-v22-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-regular.eot'); /* IE9 Compat Modes */
+    src: url('./fonts/roboto-mono-v22-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('./fonts/roboto-mono-v22-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('./fonts/roboto-mono-v22-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-regular.woff') format('woff'), /* Modern Browsers */
+         url('./fonts/roboto-mono-v22-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('./fonts/roboto-mono-v22-vietnamese_latin-ext_latin_greek_cyrillic-ext_cyrillic-regular.svg#RobotoMono') format('svg'); /* Legacy iOS */
+}
+
+/* open-sans-regular - vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-regular.eot'); /* IE9 Compat Modes */
+    src: url('./fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('./fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('./fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-regular.woff') format('woff'), /* Modern Browsers */
+         url('./fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('./fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-regular.svg#OpenSans') format('svg'); /* Legacy iOS */
+}
+
+/* merriweather-regular - vietnamese_latin-ext_latin_cyrillic-ext_cyrillic */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Merriweather';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./fonts/merriweather-v30-vietnamese_latin-ext_latin_cyrillic-ext_cyrillic-regular.eot'); /* IE9 Compat Modes */
+    src: url('./fonts/merriweather-v30-vietnamese_latin-ext_latin_cyrillic-ext_cyrillic-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('./fonts/merriweather-v30-vietnamese_latin-ext_latin_cyrillic-ext_cyrillic-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('./fonts/merriweather-v30-vietnamese_latin-ext_latin_cyrillic-ext_cyrillic-regular.woff') format('woff'), /* Modern Browsers */
+         url('./fonts/merriweather-v30-vietnamese_latin-ext_latin_cyrillic-ext_cyrillic-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('./fonts/merriweather-v30-vietnamese_latin-ext_latin_cyrillic-ext_cyrillic-regular.svg#Merriweather') format('svg'); /* Legacy iOS */
+}
+
+/* sorts-mill-goudy-regular - latin-ext_latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Sorts Mill Goudy';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./fonts/sorts-mill-goudy-v15-latin-ext_latin-regular.eot'); /* IE9 Compat Modes */
+    src: url('./fonts/sorts-mill-goudy-v15-latin-ext_latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('./fonts/sorts-mill-goudy-v15-latin-ext_latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('./fonts/sorts-mill-goudy-v15-latin-ext_latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('./fonts/sorts-mill-goudy-v15-latin-ext_latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('./fonts/sorts-mill-goudy-v15-latin-ext_latin-regular.svg#SortsMillGoudy') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./fonts/helvetica.ttf') format('truetype'), /* Safari, Android, iOS */
+}
+
+body {
+    background-color: beige;
+}
+
+button {
+    margin-left: 7px;
+}
+
+.container {
+    display: flex;
+    justify-content: end;
+}
+
+.gridColOne {
+    height: 1122px;
+    grid-column: 1;
+    background-color: red;
+    justify-items: center;
+    color: white;
+}
+
+.gridColOneMarginControl {
+    height: 1120px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.gridColTwo {
+    height: 1122px;
+    grid-column: 2;
+    background-color: blue;
+}
+
+.gridColTwoMarginControl {
+    height: 1100px;
+    padding: 10px;
+}
+
+.horizontalLineDetails {
+    justify-self: center;
+    background-color: rgb(255, 255, 255);
+    width: 90%;
+    height: 1.5px;
+    line-height: 80%;
+}
+
+.horizontalLineMain {
+    justify-self: left;
+    background-color: rgb(0, 0, 0);
+    width: 100%;
+    height: 2.5px;
+    line-height: 80%;
+}
+
+.img {
+    height: 150px;
+    width: 150px;
+    visibility: hidden;
+}
+
+.imgContainer {
+    margin-top: 50px;
+    display: grid;
+}
+
+.lineController {
+    display: grid;
+}
+
+.miniBlock {
+    padding: 7px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.userInputs {
+    float: right;
+    display: flex;
+    background-color: plum;
+    justify-content: space-around;
+    padding: 10px;
+    border-radius: 25px;
+    font-family:  Arial, Helvetica, sans-serif;
+}
+
+.userInputs h2 {
+    padding: 10px;
+    margin: 0px;
+}
+
+.userInputsMain {
+    background-color: lightcoral;
+    flex-grow: 1;
+    margin: 10px 25px;
+    border-radius: 25px;
+    padding-bottom: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.userInputsMain .miniBlock {
+    background-color:  rgb(232, 103, 103);
+}
+
+.userInputsDesign {
+    background-color: lightgreen;
+    flex-grow: 1;
+    margin: 10px 25px;
+    border-radius: 25px;
+    padding-bottom: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.userInputsDetails {
+    background-color: lightblue;
+    flex-grow: 1;
+    margin: 10px 25px;
+    border-radius: 25px;
+    padding-bottom: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.userInputsDetails .miniBlock {
+    background-color: rgb(149, 200, 233);
+}
+
+.userOutputs {
+    height: 1122px;
+    width: 793.7px;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    background-color: lightpink;
+}
+
+.userOutputsDecorator {
+    height: 1122px;
+    border: 1px solid black;
+    box-shadow: 10px 10px 5px 5px rgb(0 0 0 / 20%);
+}
+
+.userOutputs h1 {
+    margin: 0;
+    font-size: 40px;
+}
+
+.userOutputs h3, h4 {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.userOutputs li {
+    
+    display: inline;
+    margin-left: 10px;
+    
+}
+
+.userOutputs li::before {
+    content: "\2022\00A0";
+}
+
+.userOutputs p {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.userOutputs ul {
+    margin: 7px 0;
+    padding: 0;
+}
+
+.userOutputsOuter {
+    height: 1200.51px;
+    padding-top: 25px;
+    min-width: 900px;
+    flex-grow: 1;
+    display: inline-flex;
+    justify-content: center;
+    background-color: inherit;
+}
+
+#userInputsDetailsSectionBtns, #userInputsMainSectionBtns {
+    background-image: repeating-linear-gradient(
+    -55deg,
+    #000,
+    #000 20px,
+    transparent 20px,
+    transparent 40px
+    );
+}
+
+#usernameOut {
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    margin-top: 20;
+    margin-bottom: 5px;
+}
+
+#outputDetailsKey {
+    white-space: pre-line;
+    display: none;
+    margin-left: 13px;
+}
+
+#outputDetailsTitle {
+    text-align: center;
+}
+
+#outputMainProfile {
+    white-space: pre-line;
+    display: none;
+}
