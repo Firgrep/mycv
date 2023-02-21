@@ -3,12 +3,12 @@
 // -----------------------------------------
 
 const maxNumberOfLeftSections = 5;
-const maxNumberOfLeftSubSections = 6;
 const maxNumberOfRightSections = 5;
 
 const defaultSectionHeading = "Heading";
 const defaultListItem = "List Item(s)";
 const defaultFreeText = "Free text";
+const defaultEntry = "Entry";
 
 let numberOfLeftSections = 0;
 let numberOfLeftSubSections = Array.from(Array(maxNumberOfLeftSections), () => 0);
@@ -20,7 +20,19 @@ let numberOfRightSubSections = Array.from(Array(maxNumberOfRightSections), () =>
 // ---  Work Variables                   ---
 // -----------------------------------------
 
-let usernameIn = document.getElementById("usernameIn");
+const fontSelect = document.getElementById("fontSelect");
+const outputDetailLine = document.getElementById("outputDetailLine");
+const imgBorderRadiusRange = document.getElementById("imgBorderRadiusRange");
+
+const backgroundMainSelector = document.getElementById("backgroundMainSelector");
+const gridColTwo = document.getElementsByClassName("gridColTwo")[0];
+const backgroundDetailSelector = document.getElementById("backgroundDetailSelector");
+const gridColOne = document.getElementsByClassName("gridColOne")[0];
+const backgroundMainChoiceEnd = document.getElementById("backgroundMainChoiceEnd");
+const backgroundDetailChoiceOne = document.getElementById("backgroundDetailChoiceOne");
+const backgroundMainChoiceOne = document.getElementById("backgroundMainChoiceOne");
+
+const usernameIn = document.getElementById("usernameIn");
 const usernameOut = document.getElementById("usernameOut").innerHTML;
 const inputDetailsTitle = document.getElementById("inputDetailsTitle");
 const outputDetailsTitle = document.getElementById("outputDetailsTitle");
@@ -48,10 +60,110 @@ const userOutputsMainEnd = document.getElementById("userOutputsMainEnd");
 const addSectionMainBtn = document.getElementById("addSectionMainBtn");
 const removeSectionMainBtn = document.getElementById("removeSectionMainBtn");
 
+const userInputsDesignToggleCollapseBtn = document.getElementById("userInputsDesignToggleCollapseBtn");
+const userInputsDesignCollapse = document.getElementById("userInputsDesignCollapse");
+const userInputsDetailsToggleCollapseBtn = document.getElementById("userInputsDetailsToggleCollapseBtn");
+const userInputsDetailsCollapse = document.getElementById("userInputsDetailsCollapse");
+const userInputsMainToggleCollapseBtn = document.getElementById("userInputsMainToggleCollapseBtn");
+const userInputsMainCollapse = document.getElementById("userInputsMainCollapse");
+
 let downloadPdf = document.getElementById("downloadPdf");
 
-const fontSelect = document.getElementById("fontSelect");
+// -----------------------------------------
+// ---  DOM manipulation: style          ---
+// -----------------------------------------
 
+const changeFont = function(font) {
+	let element = document.querySelector(".userOutputs");
+	element.style.fontFamily = font.value;
+}
+
+imgBorderRadiusRange.addEventListener("change", function () {
+	img = document.querySelector("img");
+	img.style.borderRadius = `${imgBorderRadiusRange.value}%`;
+});
+
+backgroundMainSelector.addEventListener("click", function (e) {
+	if (e.target && e.target.matches("input[type='radio']")) {
+        if (e.target.value === "backgroundMainOne") {
+			gridColTwo.style.backgroundColor = "white";
+			if (backgroundMainChoiceEnd.checked) {
+				gridColOne.style.backgroundColor = "white";
+			}
+		}
+		else if (e.target.value === "backgroundMainTwo") {
+			gridColTwo.style.backgroundColor = "beige";
+			if (backgroundMainChoiceEnd.checked) {
+				gridColOne.style.backgroundColor = "beige";
+			}
+		}
+		else if (e.target.value === "backgroundMainThree") {
+			gridColTwo.style.backgroundColor = "#fbfbf8";
+			if (backgroundMainChoiceEnd.checked) {
+				gridColOne.style.backgroundColor = "#fbfbf8";
+			}
+		}
+		else if (e.target.value === "gainsboro") {
+			gridColTwo.style.backgroundColor = e.target.value;
+			if (backgroundMainChoiceEnd.checked) {
+				gridColOne.style.backgroundColor = e.target.value;
+			}
+		}
+		else if (e.target.value === "azure") {
+			gridColTwo.style.backgroundColor = e.target.value;
+			if (backgroundMainChoiceEnd.checked) {
+				gridColOne.style.backgroundColor = e.target.value;
+			}
+		}
+    }
+});
+
+const detailsPanelColorToggle = function(i) {
+	switch (i) {
+		case 0:
+			gridColOne.style.color = "black";
+			outputDetailLine.style.backgroundColor = "black";
+			break;
+		case 1:
+			gridColOne.style.color = "white";
+			outputDetailLine.style.backgroundColor = "white";
+			break;
+	}
+};
+
+backgroundDetailSelector.addEventListener("click", function (e) {
+	if (e.target && e.target.matches("input[type='radio']")) {
+        if (e.target.value === "backgroundDetailOne") {
+			gridColOne.style.backgroundColor = "navy";
+			detailsPanelColorToggle(1);
+		}
+		else if (e.target.value === "backgroundDetailTwo") {
+			gridColOne.style.backgroundColor = "crimson";
+			detailsPanelColorToggle(1);
+		}
+		else if (e.target.value === "backgroundDetailThree") {
+			gridColOne.style.backgroundColor = "darkturquoise";
+			detailsPanelColorToggle(1);
+		}
+		else if (e.target.value === "steelblue") {
+			gridColOne.style.backgroundColor = e.target.value;
+			detailsPanelColorToggle(1);
+		}
+		else if (e.target.value === "goldenrod") {
+			gridColOne.style.backgroundColor = e.target.value;
+			detailsPanelColorToggle(1);
+		}
+		else if (e.target.value === "springgreen") {
+			gridColOne.style.backgroundColor = e.target.value;
+			detailsPanelColorToggle(0);
+		}
+		else if (e.target.value === "backgroundDetailEnd") {
+			const elem = window.getComputedStyle(gridColTwo);
+			gridColOne.style.backgroundColor = elem.getPropertyValue("background-color");
+			detailsPanelColorToggle(0);
+		}
+    }
+});
 
 // -----------------------------------------
 // ---  DOM manipulation: text           ---
@@ -76,8 +188,6 @@ function fillHTML(input, output) {
 
 inputDetailsTitle.addEventListener("input", () => fillHTML(inputDetailsTitle, outputDetailsTitle));
 inputDetailsKey.addEventListener("input", () => fillHTML(inputDetailsKey, outputDetailsKey));
-
-
 
 addSectionDetailsBtn.addEventListener("click", function() {
 	// Create userInputs side HTML elements
@@ -142,7 +252,7 @@ addSectionDetailsBtn.addEventListener("click", function() {
 	const newOutputOne = document.createElement("h3");
 	newOutputOne.setAttribute("id", `outputDetailSection${numberOfLeftSections}`);
 	newOutputOne.setAttribute("name", `outputDetailSection${numberOfLeftSections}`);
-	newOutputOne.innerHTML = `${defaultSectionHeading} ${numberOfLeftSections}`;
+	newOutputOne.innerHTML = `${defaultSectionHeading} ${numberOfLeftSections + 1}`;
 
 	newOutputDiv.appendChild(newOutputOne);
 
@@ -168,14 +278,13 @@ removeSectionDetailsBtn.addEventListener("click", function() {
 	const inputDivDelete = document.getElementById(`inputDetailAutoMiniDiv${numberOfLeftSections - 1}`);
 	while (inputDivDelete.lastChild) {
 		// If there are any inner sub-sections, these need to be accounted for and their respective flags updated.
-		// Only run once since input/output both share the same subsection index flag. 
-
-		// !! FUTURE !!
-		// !! To save computing power, nest the for below in an if here that checks if the lastChild is of nodeName === DIV
-		for (let j = 0; j < numberOfLeftSubSections[numberOfLeftSections - 1]; j++) {
-			if (inputDivDelete.lastChild.matches(`#inputDetailAutoMiniMiniDiv${numberOfLeftSections - 1}-${j}`)) {
-				numberOfLeftSubSections[numberOfLeftSections - 1] -= 1;
-				break;
+		// No need to run on the output side since input/output both share the same subsection index flag. 
+		if (inputDivDelete.lastChild.nodeName === "DIV") {
+			for (let i = 0; i < numberOfLeftSubSections[numberOfLeftSections - 1]; i++) {
+				if (inputDivDelete.lastChild.matches(`#inputDetailAutoMiniMiniDiv${numberOfLeftSections - 1}-${i}`)) {
+					numberOfLeftSubSections[numberOfLeftSections - 1] -= 1;
+					break;
+				}
 			}
 		}
 		inputDivDelete.removeChild(inputDivDelete.lastChild);
@@ -323,7 +432,7 @@ userInputsDetailsDynamic.addEventListener("click", function(e) {
 				const newOutputSubHeading = document.createElement("h4");
 				newOutputSubHeading.setAttribute("id", `outputDetailSubSection${i}-${numberOfLeftSubSections[i]}`);
 				newOutputSubHeading.setAttribute("name", `outputDetailSubSection${i}-${numberOfLeftSubSections[i]}`);
-				newOutputSubHeading.innerHTML = `${defaultSectionHeading} ${i}-${numberOfLeftSubSections[i]}`;
+				newOutputSubHeading.innerHTML = `${defaultSectionHeading} ${i + 1}-${numberOfLeftSubSections[i] + 1}`;
 				newOutputDivSub.appendChild(newOutputSubHeading);
 
 				const parentOfOutputSubSection = document.getElementById(`outputDetailAutoMiniDiv${i}`);
@@ -387,7 +496,7 @@ userInputsDetailsDynamic.addEventListener("click", function(e) {
 				const newOutputLI1 = document.createElement("li");
 				newOutputLI1.setAttribute("id", `outputDetailListItemLeft${i}-${numberOfLeftSubSections[i]}`);
 				newOutputLI1.setAttribute("name", `outputDetailListItemLeft${i}-${numberOfLeftSubSections[i]}`);
-				newOutputLI1.innerHTML = `${defaultListItem} ${i}-${numberOfLeftSubSections[i]}`;
+				newOutputLI1.innerHTML = `${defaultListItem} ${i + 1}-${numberOfLeftSubSections[i] + 1}`;
 				newOutputUL.appendChild(newOutputLI1);
 				const newOutputLI2 = document.createElement("li");
 				newOutputLI2.setAttribute("id", `outputDetailListItemRight${i}-${numberOfLeftSubSections[i]}`);
@@ -446,7 +555,7 @@ userInputsDetailsDynamic.addEventListener("click", function(e) {
 				newFreeText.setAttribute("id", `outputDetailFreeText${i}-${numberOfLeftSubSections[i]}`);
 				newFreeText.setAttribute("name", `outputDetailFreeText${i}-${numberOfLeftSubSections[i]}`);
 				newFreeText.style.whiteSpace = "pre-line";
-				newFreeText.innerHTML = `${defaultFreeText} ${i}-${numberOfLeftSubSections[i]}`;
+				newFreeText.innerHTML = `${defaultFreeText} ${i + 1}-${numberOfLeftSubSections[i] + 1}`;
 				newOutputDivSub.appendChild(newFreeText);
 
 				const parentOfOutputSubSection = document.getElementById(`outputDetailAutoMiniDiv${i}`);
@@ -475,13 +584,6 @@ userInputsDetailsDynamic.addEventListener("click", function(e) {
 	};
 });
 	
-
-
-const changeFont = function(font) {
-	let element = document.querySelector(".userOutputs");
-	element.style.fontFamily = font.value;
-}
-
 inputMainProfile.addEventListener("input", () => fillHTML(inputMainProfile, outputMainProfile));
 
 addSectionMainBtn.addEventListener("click", function() {
@@ -521,40 +623,50 @@ addSectionMainBtn.addEventListener("click", function() {
 	newInputBreakTwo.setAttribute("id", `newInputMainBreakTwo${numberOfRightSections}`);
 	newInputDiv.appendChild(newInputBreakTwo);
 
-	const newInputTwo = document.createElement("textarea");
-	newInputTwo.setAttribute("id", `inputMainEntry${numberOfRightSections}`);
-	newInputTwo.setAttribute("name", `inputMainEntry${numberOfRightSections}`);
-	newInputTwo.setAttribute("rows", "1");
-	newInputTwo.setAttribute("cols", "60");
-	newInputTwo.setAttribute("placeholder", "Entry title");
-	newInputDiv.appendChild(newInputTwo);
+	const newInputBtnOne = document.createElement("button");
+	newInputBtnOne.setAttribute("id", `inputMainRemoveBtn${numberOfRightSections}`);
+	newInputBtnOne.setAttribute("disabled", "");
+	const newInputBtnOneInner = document.createElement("b");
+	newInputBtnOneInner.setAttribute("id", `inputMainRemoveBtnInner${numberOfRightSections}`);
+	newInputBtnOneInner.innerHTML = "Remove element";
+	newInputBtnOne.appendChild(newInputBtnOneInner);
+	newInputDiv.appendChild(newInputBtnOne);
 
-	const newInputBreakThree = document.createElement("br");
-	newInputBreakThree.setAttribute("id", `newInputMainBreakThree${numberOfRightSections}`);
-	newInputDiv.appendChild(newInputBreakThree);
-
-	const newInputThree = document.createElement("textarea");
-	newInputThree.setAttribute("id", `inputMainEntryDesc${numberOfRightSections}`);
-	newInputThree.setAttribute("name", `inputMainEntryDesc${numberOfRightSections}`);
-	newInputThree.setAttribute("rows", "3");
-	newInputThree.setAttribute("cols", "60");
-	newInputThree.setAttribute("placeholder", "Entry description (optional");
-	newInputDiv.appendChild(newInputThree);
+	const newInputBtnTwo = document.createElement("button");
+	newInputBtnTwo.setAttribute("id", `inputMainAddEntryBtn${numberOfRightSections}`);
+	const newInputBtnTwoInner = document.createElement("b");
+	newInputBtnTwoInner.setAttribute("id", `inputMainAddEntryBtnInner${numberOfRightSections}`);
+	newInputBtnTwoInner.innerHTML = "Add entry";
+	newInputBtnTwo.appendChild(newInputBtnTwoInner);
+	newInputDiv.appendChild(newInputBtnTwo);
 
 	userInputsMainDynamic.insertBefore(newInputDiv, userInputsMainEnd);
 
 	// Create userOutputs side HTML elements
-	// const newOutputDiv = document.createElement("div");
-	// newOutputDiv.setAttribute("id", `outputDetailAutoMiniDiv${numberOfLeftSections}`);
+	const newOutputDiv = document.createElement("div");
+	newOutputDiv.setAttribute("id", `outputMainAutoMiniDiv${numberOfRightSections}`);
 
-	// const newOutputOne = document.createElement("h3");
-	// newOutputOne.setAttribute("id", `outputDetailSection${numberOfLeftSections}`);
-	// newOutputOne.setAttribute("name", `outputDetailSection${numberOfLeftSections}`);
-	// newOutputOne.innerHTML = `${defaultSectionHeading} ${numberOfLeftSections}`;
+	const newDivLineControllerOne = document.createElement("div");
+	newDivLineControllerOne.setAttribute("class", "lineController");
+	const newDivHorizontalLineOne = document.createElement("div");
+	newDivHorizontalLineOne.setAttribute("class", "horizontalLineMain");
+	newDivLineControllerOne.appendChild(newDivHorizontalLineOne);
+	newOutputDiv.appendChild(newDivLineControllerOne);
 
-	// newOutputDiv.appendChild(newOutputOne);
+	const newOutputOne = document.createElement("h3");
+	newOutputOne.setAttribute("id", `outputMainSection${numberOfRightSections}`);
+	newOutputOne.setAttribute("name", `outputMainSection${numberOfRightSections}`);
+	newOutputOne.innerHTML = `${defaultSectionHeading} ${numberOfRightSections + 1}`;
+	newOutputDiv.appendChild(newOutputOne);
 
-	// userOutputsDetailsDynamic.insertBefore(newOutputDiv, userOutputsDetailsEnd);
+	const newDivLineControllerTwo = document.createElement("div");
+	newDivLineControllerTwo.setAttribute("class", "lineController");
+	const newDivHorizontalLineTwo = document.createElement("div");
+	newDivHorizontalLineTwo.setAttribute("class", "horizontalLineMain");
+	newDivLineControllerTwo.appendChild(newDivHorizontalLineTwo);
+	newOutputDiv.appendChild(newDivLineControllerTwo);
+
+	userOutputsMainDynamic.insertBefore(newOutputDiv, userOutputsMainEnd);
 
 	// Update flag
 	numberOfRightSections += 1;
@@ -575,6 +687,16 @@ removeSectionMainBtn.addEventListener("click", function() {
 	// Delete userInsputs side HTML elements
 	const inputDivDelete = document.getElementById(`inputMainAutoMiniDiv${numberOfRightSections - 1}`);
 	while (inputDivDelete.lastChild) {
+		// If there are any inner sub-sections, these need to be accounted for and their respective flags updated.
+		// No need to run on the output side since input/output both share the same subsection index flag. 
+		if (inputDivDelete.lastChild.nodeName === "DIV") {
+			for (let i = 0; i < numberOfRightSubSections[numberOfRightSections - 1]; i++) {
+				if (inputDivDelete.lastChild.matches(`#inputMainAutoMiniMiniDiv${numberOfRightSections - 1}-${i}`)) {
+					numberOfRightSubSections[numberOfRightSections - 1] -= 1;
+					break;
+				}
+			}
+		}
 		inputDivDelete.removeChild(inputDivDelete.lastChild);
 	};
 	inputDivDelete.remove();
@@ -601,6 +723,157 @@ removeSectionMainBtn.addEventListener("click", function() {
 	}
 });
 
+userInputsMainDynamic.addEventListener("input", function(e) {
+	// Input listener
+	if (e.target && e.target.nodeName == "INPUT" || e.target && e.target.nodeName == "TEXTAREA") { 
+		for (let i = 0; i < numberOfRightSections; i++) {
+			if (document.getElementById(`inputMainSection${i}`).value === "") {
+				document.getElementById(`outputMainSection${i}`).innerHTML = `${defaultSectionHeading} ${i + 1}`;
+			} else {
+				document.getElementById(`outputMainSection${i}`).innerHTML = document.getElementById(`inputMainSection${i}`).value;
+			}
+			if (numberOfRightSubSections[i] > 0) {
+				for (let j = 0; j < numberOfRightSubSections[i]; j++) {
+					// Entry input/output
+					if (document.getElementById(`inputMainEntry${i}-${j}`)) {
+						if (document.getElementById(`inputMainEntry${i}-${j}`).value === "") {
+							document.getElementById(`outputMainEntry${i}-${j}`).innerHTML = `${defaultEntry} ${i + 1}-${j + 1}`;
+						} else {
+							document.getElementById(`outputMainEntry${i}-${j}`).innerHTML 
+								= document.getElementById(`inputMainEntry${i}-${j}`).value;
+						}
+					}
+
+					// Entry Description input/output
+					if (document.getElementById(`inputMainEntryDesc${i}-${j}`)) {
+						if (document.getElementById(`inputMainEntryDesc${i}-${j}`).value === "") {
+							document.getElementById(`outputMainEntryDesc${i}-${j}`).innerHTML = "";
+							document.getElementById(`outputMainEntryDesc${i}-${j}`).style.display = "none";
+						} else {
+							document.getElementById(`outputMainEntryDesc${i}-${j}`).innerHTML 
+								= document.getElementById(`inputMainEntryDesc${i}-${j}`).value;
+							document.getElementById(`outputMainEntryDesc${i}-${j}`).style.display = "block";
+						}
+					}
+				}
+			}
+		};
+	};
+});
+
+userInputsMainDynamic.addEventListener("click", function(e) {
+	// Buttons listener
+	if (e.target.nodeName === "BUTTON" || e.target.nodeName === "B") {
+		for (let i = 0; i < numberOfRightSections; i++) {
+			
+			if (e.target === document.getElementById(`inputMainRemoveBtn${i}`)
+				|| e.target === document.getElementById(`inputMainRemoveBtnInner${i}`)) 
+			{
+				// Delete userInsputs side HTML elements
+				const inputDivDelete = document.getElementById(`inputMainAutoMiniMiniDiv${i}-${numberOfRightSubSections[i] - 1}`);
+				while (inputDivDelete.firstchild) {
+					inputDivDelete.removeChild(inputDivDelete.lastChild);
+				};
+				inputDivDelete.remove();
+
+				// Delete userOutputs side HMTL elements
+				const outputDivDelete = document.getElementById(`outputMainAutoMiniMiniDiv${i}-${numberOfRightSubSections[i] - 1}`);
+				while (outputDivDelete.firstchild) {
+					outputDivDelete.removeChild(outputDivDelete.lastChild);
+				};
+				outputDivDelete.remove();
+
+				// Update flag (notice it's an array here)
+				numberOfRightSubSections[i] -= 1;
+
+				// If necessary, update buttons
+				const inputMainRemoveBtnActive = document.getElementById(`inputMainRemoveBtn${i}`);
+				if (numberOfRightSubSections[i] < maxNumberOfRightSections) {
+					if (inputMainRemoveBtnActive.hasAttribute("disabled")) {
+						inputMainRemoveBtnActive.removeAttribute("disabled");
+					}
+				}
+
+				if (numberOfRightSubSections[i] <= 0) {
+					inputMainRemoveBtnActive.setAttribute("disabled", "");
+				}
+
+				break;
+			} 
+
+			else if (e.target === document.getElementById(`inputMainAddEntryBtn${i}`)
+					|| e.target === document.getElementById(`inputMainAddEntryBtnInner${i}`)) 
+			{
+				// Create userInputs side HTML elements
+				const newInputDivSub = document.createElement("div");
+				newInputDivSub.setAttribute("class", "miniBlock");
+				newInputDivSub.setAttribute("id", `inputMainAutoMiniMiniDiv${i}-${numberOfRightSubSections[i]}`);
+
+				const newInputTwo = document.createElement("textarea");
+				newInputTwo.setAttribute("id", `inputMainEntry${i}-${numberOfRightSubSections[i]}`);
+				newInputTwo.setAttribute("name", `inputMainEntry${i}-${numberOfRightSubSections[i]}`);
+				newInputTwo.setAttribute("rows", "1");
+				newInputTwo.setAttribute("cols", "60");
+				newInputTwo.setAttribute("placeholder", "Entry title");
+				newInputDivSub.appendChild(newInputTwo);
+
+				const newInputBreakThree = document.createElement("br");
+				newInputBreakThree.setAttribute("id", `newInputMainBreakThree${i}-${numberOfRightSubSections[i]}`);
+				newInputDivSub.appendChild(newInputBreakThree);
+
+				const newInputThree = document.createElement("textarea");
+				newInputThree.setAttribute("id", `inputMainEntryDesc${i}-${numberOfRightSubSections[i]}`);
+				newInputThree.setAttribute("name", `inputMainEntryDesc${i}-${numberOfRightSubSections[i]}`);
+				newInputThree.setAttribute("rows", "3");
+				newInputThree.setAttribute("cols", "60");
+				newInputThree.setAttribute("placeholder", "Entry description (optional");
+				newInputDivSub.appendChild(newInputThree);
+
+				const parentOfInputSubSection = document.getElementById(`inputMainRemoveBtn${i}`).parentNode;
+				const beforeOfInputSubSection = document.getElementById(`inputMainRemoveBtn${i}`);
+				parentOfInputSubSection.insertBefore(newInputDivSub, beforeOfInputSubSection);
+
+				// Create userOutputs side HTML elements
+				const newOutputDivSub = document.createElement("div");
+				newOutputDivSub.setAttribute("id", `outputMainAutoMiniMiniDiv${i}-${numberOfRightSubSections[i]}`);
+
+				const newEntry = document.createElement("p");
+				newEntry.setAttribute("id", `outputMainEntry${i}-${numberOfRightSubSections[i]}`);
+				newEntry.setAttribute("name", `outputMainEntry${i}-${numberOfRightSubSections[i]}`);
+				newEntry.innerHTML = `${defaultEntry} ${i + 1}-${numberOfRightSubSections[i] + 1}`;
+				newOutputDivSub.appendChild(newEntry);
+
+				const newEntryDesc = document.createElement("p");
+				newEntryDesc.setAttribute("id", `outputMainEntryDesc${i}-${numberOfRightSubSections[i]}`);
+				newEntryDesc.setAttribute("name", `outputMainEntryDesc${i}-${numberOfRightSubSections[i]}`);
+				newEntryDesc.style.whiteSpace = "pre-line";
+				newEntryDesc.style.display = "none";
+				newOutputDivSub.appendChild(newEntryDesc);
+
+				const parentOfOutputSubSection = document.getElementById(`outputMainAutoMiniDiv${i}`);
+				parentOfOutputSubSection.appendChild(newOutputDivSub);
+
+				// Update flag (notice it's an array here)
+				numberOfRightSubSections[i] += 1;
+
+				// If necessary, update buttons
+				const inputMainRemoveBtnActive = document.getElementById(`inputMainRemoveBtn${i}`);
+				if (numberOfRightSubSections[i] < maxNumberOfRightSections) {
+					if (inputMainRemoveBtnActive.hasAttribute("disabled")) {
+						inputMainRemoveBtnActive.removeAttribute("disabled");
+					}
+				}
+
+				if (numberOfRightSubSections[i] <= 0) {
+					inputMainRemoveBtnActive.setAttribute("disabled", "");
+				}
+
+				break;
+			}
+		};
+	};
+});
+
 // -----------------------------------------
 // ---  DOM manipulation: image          ---
 // -----------------------------------------
@@ -618,6 +891,8 @@ window.addEventListener("load", function() {
 				img.style.visibility = "visible";
 			};
 			reader.readAsDataURL(this.files[0]);
+			imgBorderRadiusRange.removeAttribute("disabled");
+			imgBorderRadiusRange.style.visibility = "visible";
 		}
 	});
   });
@@ -663,3 +938,41 @@ function convertHTMLToPDF(e) {
 }
 
 downloadPdf.addEventListener("click", convertHTMLToPDF);
+
+// -----------------------------------------
+// ---  DOM manipulation: misc & default ---
+// -----------------------------------------
+function toggleDivCollapse (target) {
+	for (let i = 0; i < target.childNodes.length; i++) {
+		if (target.childNodes[i].nodeName === "DIV") {
+			if (target.childNodes[i].style.display === "none") {
+				target.childNodes[i].style.display = "block";
+			} else {
+				target.childNodes[i].style.display = "none";
+			}
+		}
+	}
+};
+
+function toggleDivCollapseGrid (target) {
+	for (let i = 0; i < target.childNodes.length; i++) {
+		if (target.childNodes[i].nodeName === "DIV") {
+			if (target.childNodes[i].style.display === "none") {
+				target.childNodes[i].style.display = "grid";
+			} else {
+				target.childNodes[i].style.display = "none";
+			}
+		}
+	}
+};
+
+userInputsDesignToggleCollapseBtn.addEventListener("click", () => toggleDivCollapseGrid(userInputsDesignCollapse));
+userInputsDetailsToggleCollapseBtn.addEventListener("click", () => toggleDivCollapse(userInputsDetailsCollapse));
+userInputsMainToggleCollapseBtn.addEventListener("click", () => toggleDivCollapse(userInputsMainCollapse));
+
+window.onload = function () {
+	backgroundDetailChoiceOne.click();
+	backgroundMainChoiceOne.click();
+	addSectionDetailsBtn.click();
+	addSectionMainBtn.click();
+};

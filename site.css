@@ -64,11 +64,16 @@
 }
 
 body {
-    background-color: beige;
+    background: linear-gradient(90deg, rgba(240,192,238,1) 0%, rgba(245,245,220,1) 33%, rgba(252,187,94,1) 100%);
 }
 
 button {
     margin-left: 7px;
+}
+
+fieldset {
+    border: 2px solid rgb(41, 210, 41);
+    border-radius: 8px;
 }
 
 .container {
@@ -76,10 +81,91 @@ button {
     justify-content: end;
 }
 
+.designPanelGrid {
+    display: grid;
+}
+.designPanelItemA, .designPanelItemB, .designPanelItemC, .designPanelItemD {
+    padding-top: 5px;
+}
+
+.designPanelItemA {
+    grid-row: 3;
+    grid-column: 1;
+    text-align: center;
+}
+
+.designPanelItemB {
+    grid-row: 1;
+    grid-column: 1 / span 5;
+}
+
+.designPanelItemC {
+    grid-row: 2;
+    grid-column: 1 / span 5;
+}
+
+.designPanelItemD {
+    grid-row: 3;
+    grid-column: 5;
+}
+
+.fancyBtn {
+    position: relative;
+    border: none;
+    font-size: 14px;
+    color: #FFFFFF;
+    padding: 2px;
+    width: 100px;
+    height: 24px;
+    border-radius: 5px;
+    text-align: center;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.fancyBtn:hover {
+    background-color: gold;
+    color: black;
+}
+
+.fancyBtn:after {
+    content: "";
+    background: #f1f1f1;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+  
+.fancyBtn:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+
+.fancyBtnDetails {
+    background-color: rgb(17, 120, 155);
+}
+
+.fancyBtnDesign {
+    background-color: #4CAF50;
+}
+
+.fancyBtnMain {
+    background-color: rgb(154, 42, 42);
+}
+
 .gridColOne {
     height: 1122px;
     grid-column: 1;
-    background-color: red;
+    background-color: black;
     justify-items: center;
     color: white;
 }
@@ -93,7 +179,7 @@ button {
 .gridColTwo {
     height: 1122px;
     grid-column: 2;
-    background-color: blue;
+    background-color: black;
 }
 
 .gridColTwoMarginControl {
@@ -138,10 +224,44 @@ button {
     border-radius: 5px;
 }
 
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 10px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+  
+.slider:hover {
+    opacity: 1;
+}
+  
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #04AA6D;
+    cursor: pointer;
+}
+  
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #04AA6D;
+    cursor: pointer;
+}
+
 .userInputs {
     float: right;
     display: flex;
-    background-color: plum;
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(221,160,221,1) 100%);
     justify-content: space-around;
     padding: 10px;
     border-radius: 25px;
@@ -151,6 +271,74 @@ button {
 .userInputs h2 {
     padding: 10px;
     margin: 0px;
+}
+
+.userInputsDesign {
+    background-color: lightgreen;
+    flex-grow: 1;
+    margin: 10px 25px;
+    border-radius: 25px;
+    padding-bottom: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.userInputsDesign .miniBlock {
+    background-color: rgb(114, 231, 114);
+}
+
+.userInputsDetails {
+    background-color: lightblue;
+    flex-grow: 1;
+    margin: 10px 25px;
+    border-radius: 25px;
+    padding-bottom: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.userInputsDetails .miniBlock {
+    background-color: rgb(149, 200, 233);
+}
+
+.userInputsDetailsInner, .userInputsMainInner{
+    overflow: auto;
+    max-height: 400px;
+}
+
+.userInputsDetailsInner::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px lightblue;
+}
+
+.userInputsDetailsInner::-webkit-scrollbar-thumb {
+    background: rgb(91, 179, 238);
+}
+
+.userInputsDetailsInner::-webkit-scrollbar-thumb:hover {
+    background: rgb(26, 127, 195);
+}
+
+.userInputsExport {
+    background-color: rgb(235, 230, 98);
+    flex-grow: 1;
+    margin: 10px 25px;
+    border-radius: 25px;
+    padding: 8px;
+}
+
+.userInputsHeading {
+    display: grid;
+    align-items: center;
+}
+
+.userInputsHeadingLeft {
+    grid-row: 1;
+    justify-self: flex-start;
+}
+
+.userInputsHeadingRight {
+    grid-row: 1;
+    justify-self: flex-end;
 }
 
 .userInputsMain {
@@ -167,29 +355,19 @@ button {
     background-color:  rgb(232, 103, 103);
 }
 
-.userInputsDesign {
-    background-color: lightgreen;
-    flex-grow: 1;
-    margin: 10px 25px;
-    border-radius: 25px;
-    padding-bottom: 8px;
-    padding-left: 8px;
-    padding-right: 8px;
+.userInputsMainInner::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px lightcoral;
 }
 
-.userInputsDetails {
-    background-color: lightblue;
-    flex-grow: 1;
-    margin: 10px 25px;
-    border-radius: 25px;
-    padding-bottom: 8px;
-    padding-left: 8px;
-    padding-right: 8px;
+.userInputsMainInner::-webkit-scrollbar-thumb {
+    background: rgb(235, 84, 84);
 }
 
-.userInputsDetails .miniBlock {
-    background-color: rgb(149, 200, 233);
+.userInputsMainInner::-webkit-scrollbar-thumb:hover {
+    background: rgb(221, 34, 34);
 }
+
+
 
 .userOutputs {
     height: 1122px;
@@ -246,6 +424,10 @@ button {
     background-color: inherit;
 }
 
+#exportHeading {
+    display: inline;
+}
+
 #userInputsDetailsSectionBtns, #userInputsMainSectionBtns {
     background-image: repeating-linear-gradient(
     -55deg,
@@ -257,7 +439,6 @@ button {
 }
 
 #usernameOut {
-    color: white;
     font-size: 25px;
     text-align: center;
     margin-top: 20;
@@ -277,4 +458,22 @@ button {
 #outputMainProfile {
     white-space: pre-line;
     display: none;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+  
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px plum;
+    border-radius: 10px;
+}
+   
+::-webkit-scrollbar-thumb {
+    background: rgb(211, 104, 211);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(203, 33, 203);
 }
