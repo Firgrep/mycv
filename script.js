@@ -67,7 +67,8 @@ const userInputsDetailsCollapse = document.getElementById("userInputsDetailsColl
 const userInputsMainToggleCollapseBtn = document.getElementById("userInputsMainToggleCollapseBtn");
 const userInputsMainCollapse = document.getElementById("userInputsMainCollapse");
 
-let downloadPdf = document.getElementById("downloadPdf");
+const imgWarning = document.getElementById("imgWarning");
+const downloadPdf = document.getElementById("downloadPdf");
 
 // -----------------------------------------
 // ---  DOM manipulation: style          ---
@@ -893,6 +894,7 @@ window.addEventListener("load", function() {
 			reader.readAsDataURL(this.files[0]);
 			imgBorderRadiusRange.removeAttribute("disabled");
 			imgBorderRadiusRange.style.visibility = "visible";
+			imgWarning.style.display = "none";
 		}
 	});
   });
