@@ -63,8 +63,36 @@
     src: url('./fonts/helvetica.ttf') format('truetype'), /* Safari, Android, iOS */
 }
 
+@media only screen and (min-width: 551px) {
+    .warningUnsupported {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .navbarNav {
+        margin: 0 0 0 0 !important;
+    }
+    .containerCreation {
+        display: block !important;
+        min-width: unset !important;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    header, main, footer {
+        display: none;
+    }
+    .warningUnsupported {
+        height: 100vh;
+        display: block;
+    }
+}
+
 body {
     background: linear-gradient(90deg, rgba(240,192,238,1) 0%, rgba(245,245,220,1) 33%, rgba(252,187,94,1) 100%);
+    margin: 0;
+    padding: 0;
 }
 
 button {
@@ -76,9 +104,32 @@ fieldset {
     border-radius: 8px;
 }
 
+footer {
+    border-top: 3px solid black;
+    margin-top: 5rem;
+    height: 20rem;
+    width: 100%;
+    background: linear-gradient(178deg, rgba(0,0,0,1) 5%, rgba(149,142,205,1) 70%, rgba(255,205,172,1) 100%);
+    display: block;
+    text-align: center;
+}
+
+main {
+    padding-top: 5rem;
+}
+
 .container {
+    min-height: 1200px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 200px;
+}
+
+.containerCreation {
     display: flex;
     justify-content: end;
+    overflow: auto;
+    min-width: 1400px;
 }
 
 .designPanelGrid {
@@ -107,6 +158,13 @@ fieldset {
 .designPanelItemD {
     grid-row: 3;
     grid-column: 5;
+}
+
+.exampleLink {
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    padding: 4%;
 }
 
 .fancyBtn {
@@ -224,6 +282,112 @@ fieldset {
     border-radius: 5px;
 }
 
+.navbar {
+    z-index: 100;
+    height: 3rem;
+    width: 100%;
+    position: fixed;
+    background: linear-gradient(90deg, rgba(153,141,240,1) 0%, rgba(224,230,246,1) 25%);
+}
+
+.navbarNav:hover .navLinkText {
+    visibility: visible;
+}
+
+.navbarNav {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0 0 0 10rem;
+    justify-content: center;
+}
+
+.navItem {
+    width: 100%;
+}
+
+.navRow {
+    width: 100%;
+    max-width: 76rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.navLink {
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    color:rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+.navLink svg {
+    min-width: 2rem;
+    margin: 1rem;
+}
+
+.navLinkText {
+    visibility: hidden;
+    font-family: "Open Sans", Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.navSvg {
+    height: 80%;
+}
+
+.navSvg:hover {
+    fill: rgb(128, 9, 128);
+    transition-delay: 50ms;
+}
+
+.logo {
+    background-image: radial-gradient(circle, rgba(63,94,251,1) 0%, rgb(145, 52, 145) 100%);
+    background-clip: text;
+    color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: "Open Sans", Arial, sans-serif;
+    font-weight: bold;
+    font-size: 35px;
+}
+
+.logoBeta {
+    background-image: linear-gradient(178deg, rgba(0,18,255,1) 5%, rgba(180,0,170,1) 57%, rgba(205,0,0,1) 100%);
+    border-radius: 25px;
+    display: inline-block;
+    padding: 2px;
+}
+
+.logoBetaText {
+    color: white;
+    text-transform: uppercase;
+    font-family: "Open Sans", Arial, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 2px;
+}
+
+.logoBlock {
+    width: 10rem;
+    align-items: center;
+    display: flex;
+}
+
+.logoDeco {
+    text-decoration: none;
+}
+
+.siteText {
+    /* text-align: justify; */
+    font-family: "Open Sans", Arial, sans-serif;
+    font-size: 1.75rem;
+}
+
 .slider {
     -webkit-appearance: none;
     appearance: none;
@@ -258,13 +422,150 @@ fieldset {
     cursor: pointer;
 }
 
+.socialMediaButton {
+    height: 50px;
+}
+
+.warningUnsupported {
+    background-color: azure;
+}
+
+.warningUnsupported p {
+    margin: 0;
+    padding: 5%;
+    font-size: 1.5rem;
+}
+
+.warningUnsupportedInner {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+}
+
+.wrapperPreview {
+    display: grid;
+    max-width: 76rem;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    grid-template-areas:
+    "a a b b b b"
+    "a a b b b b"
+    "a a b b b b"
+    "c c c c c c"
+    "d d e e f f"
+    "g g h h i i";
+}
+
+.wrapper {
+    display: grid;
+    max-width: 76rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    grid-template-areas:
+    "a a"
+    "b c"
+    "d e"
+    "f g"
+    "h h"
+    "i j";
+}
+
+.wrapperBackground {
+    background-color: rgba(224, 199, 199, 0.5);
+    border-radius: 25px;
+    margin: 2rem;
+    padding: 1rem;
+}
+
+.wrapperBackgroundWarning {
+    background-color: rgba(208, 156, 23, 0.5);
+    border-radius: 25px;
+    margin: 2rem;
+    padding: 1rem;
+    border: 2px dotted red;
+}
+
+.wrapperImg {
+    height: 90%;
+    width: 90%;
+    object-fit: contain;
+    border-radius: 30px;
+    box-shadow: 10px 5px 5px rgb(18, 18, 18);
+}
+
+.wrapperImgPreview {
+    height: 90%;
+    width: 90%;
+    object-fit: contain;
+}
+
+.wrapperImgPreviewExampleCV {
+    height: 50%;
+    width: 50%;
+    object-fit: contain;
+}
+
+.wrapperImgPreviewExampleCV:hover {
+    fill: rgb(128, 9, 128);
+    transition-delay: 50ms;
+}
+
+.wrapperItemA {
+    grid-area: a;
+}
+
+.wrapperItemB {
+    grid-area: b;
+}
+
+.wrapperItemC {
+    grid-area: c;
+}
+
+.wrapperItemD {
+    grid-area: d;
+}
+
+.wrapperItemE {
+    grid-area: e;
+}
+
+.wrapperItemF {
+    grid-area: f;
+}
+
+.wrapperItemG {
+    grid-area: g;
+}
+
+.wrapperItemH {
+    grid-area: h;
+}
+
+.wrapperItemI {
+    grid-area: i;
+}
+
+.wrapperItemJ {
+    grid-area: j;
+}
+
+.wrapperGeneric {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .userInputs {
     float: right;
     display: flex;
     background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(221,160,221,1) 100%);
     justify-content: space-around;
     padding: 10px;
-    border-radius: 25px;
+    border-radius: 25px 0 0 25px;
     font-family:  Arial, Helvetica, sans-serif;
 }
 
@@ -398,7 +699,6 @@ fieldset {
 }
 
 .userOutputs li {
-    
     display: inline;
     margin-left: 10px;
     

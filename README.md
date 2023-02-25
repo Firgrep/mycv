@@ -1,6 +1,6 @@
 # myCV :: README
 
-An interactive serverless web app that allows users to create a simple, yet stylish and effective CV. Includes PDF generation and export using the jsPDF library. myCV was built to primarily to practice vanilla JavaScript but with utility in mind. Moreover, since it is a practice project, no usage has been made of additional libraries such as jquery, bootstrap, HTML templates, etc., such that all the structure, styling and scripting has been written largely from scratch (with the exception jsPDF). 
+An interactive serverless web app that allows users to create a simple, yet stylish and effective CV. Includes PDF generation and export using the jsPDF library. myCV was built to primarily to practice vanilla JavaScript but with utility in mind. Moreover, since it is a practice project, no usage has been made of additional libraries such as jquery, bootstrap, HTML templates, etc., such that all the structure, styling and scripting has been written largely from scratch (with the exception jsPDF and the icons). 
 
 ## How to use (user agent)
 
@@ -19,3 +19,5 @@ The only necessary element on the CV template is one's name, but apart from this
 ## Libaries used
 
 jsPDF has been used for the .pdf generation and export. The jsPDF object parameters have been customized to fit exactly the HTML on the page, which should be an approriately sized. Additional fonts have been imported into jsPDF to support a wider selection. 
+
+Font Awesome for the icons.

@@ -9,6 +9,7 @@ const defaultSectionHeading = "Heading";
 const defaultListItem = "List Item(s)";
 const defaultFreeText = "Free text";
 const defaultEntry = "Entry";
+const sectionMarginTop = "10px";
 
 let numberOfLeftSections = 0;
 let numberOfLeftSubSections = Array.from(Array(maxNumberOfLeftSections), () => 0);
@@ -80,7 +81,7 @@ const changeFont = function(font) {
 }
 
 imgBorderRadiusRange.addEventListener("change", function () {
-	img = document.querySelector("img");
+	img = document.getElementById("myImg");
 	img.style.borderRadius = `${imgBorderRadiusRange.value}%`;
 });
 
@@ -143,7 +144,7 @@ backgroundDetailSelector.addEventListener("click", function (e) {
 			detailsPanelColorToggle(1);
 		}
 		else if (e.target.value === "backgroundDetailThree") {
-			gridColOne.style.backgroundColor = "darkturquoise";
+			gridColOne.style.backgroundColor = "#007E81";
 			detailsPanelColorToggle(1);
 		}
 		else if (e.target.value === "steelblue") {
@@ -249,11 +250,13 @@ addSectionDetailsBtn.addEventListener("click", function() {
 	// Create userOutputs side HTML elements
 	const newOutputDiv = document.createElement("div");
 	newOutputDiv.setAttribute("id", `outputDetailAutoMiniDiv${numberOfLeftSections}`);
+	newOutputDiv.style.marginTop = `${sectionMarginTop}`;
 
 	const newOutputOne = document.createElement("h3");
 	newOutputOne.setAttribute("id", `outputDetailSection${numberOfLeftSections}`);
 	newOutputOne.setAttribute("name", `outputDetailSection${numberOfLeftSections}`);
 	newOutputOne.innerHTML = `${defaultSectionHeading} ${numberOfLeftSections + 1}`;
+	newOutputOne.style.textDecoration = "underline";
 
 	newOutputDiv.appendChild(newOutputOne);
 
@@ -319,7 +322,7 @@ userInputsDetailsDynamic.addEventListener("input", function(e) {
 	if (e.target && e.target.nodeName == "INPUT" || e.target && e.target.nodeName == "TEXTAREA") { 
 		for (let i = 0; i < numberOfLeftSections; i++) {
 			if (document.getElementById(`inputDetailSection${i}`).value === "") {
-				document.getElementById(`outputDetailSection${i}`).innerHTML = `${defaultSectionHeading} ${i}`;
+				document.getElementById(`outputDetailSection${i}`).innerHTML = `${defaultSectionHeading} ${i + 1}`;
 			} else {
 				document.getElementById(`outputDetailSection${i}`).innerHTML = document.getElementById(`inputDetailSection${i}`).value;
 			}
@@ -328,7 +331,7 @@ userInputsDetailsDynamic.addEventListener("input", function(e) {
 					// Subheadings input/output
 					if (document.getElementById(`inputDetailSubSection${i}-${j}`)) {
 						if (document.getElementById(`inputDetailSubSection${i}-${j}`).value === "") {
-							document.getElementById(`outputDetailSubSection${i}-${j}`).innerHTML = `${defaultSectionHeading} ${i}-${j}`;
+							document.getElementById(`outputDetailSubSection${i}-${j}`).innerHTML = `${defaultSectionHeading} ${i + 1}-${j + 1}`;
 						} else {
 							document.getElementById(`outputDetailSubSection${i}-${j}`).innerHTML 
 								= document.getElementById(`inputDetailSubSection${i}-${j}`).value;
@@ -338,7 +341,7 @@ userInputsDetailsDynamic.addEventListener("input", function(e) {
 					// List items input/output
 					if (document.getElementById(`inputDetailListItemLeft${i}-${j}`)) {
 						if (document.getElementById(`inputDetailListItemLeft${i}-${j}`).value === "") {
-						document.getElementById(`outputDetailListItemLeft${i}-${j}`).innerHTML = `${defaultListItem} ${i}-${j}`;
+						document.getElementById(`outputDetailListItemLeft${i}-${j}`).innerHTML = `${defaultListItem} ${i + 1}-${j + 1}`;
 						} else {
 							document.getElementById(`outputDetailListItemLeft${i}-${j}`).innerHTML 
 								= document.getElementById(`inputDetailListItemLeft${i}-${j}`).value;
@@ -355,7 +358,7 @@ userInputsDetailsDynamic.addEventListener("input", function(e) {
 					// Free text input/output
 					if (document.getElementById(`inputDetailFreeText${i}-${j}`)) {
 						if (document.getElementById(`inputDetailFreeText${i}-${j}`).value === "") {
-							document.getElementById(`outputDetailFreeText${i}-${j}`).innerHTML = `${defaultFreeText} ${i}-${j}`;
+							document.getElementById(`outputDetailFreeText${i}-${j}`).innerHTML = `${defaultFreeText} ${i + 1}-${j + 1}`;
 						} else {
 							document.getElementById(`outputDetailFreeText${i}-${j}`).innerHTML 
 								= document.getElementById(`inputDetailFreeText${i}-${j}`).value;
@@ -646,6 +649,7 @@ addSectionMainBtn.addEventListener("click", function() {
 	// Create userOutputs side HTML elements
 	const newOutputDiv = document.createElement("div");
 	newOutputDiv.setAttribute("id", `outputMainAutoMiniDiv${numberOfRightSections}`);
+	newOutputDiv.style.marginTop = `${sectionMarginTop}`;
 
 	const newDivLineControllerOne = document.createElement("div");
 	newDivLineControllerOne.setAttribute("class", "lineController");
@@ -658,6 +662,7 @@ addSectionMainBtn.addEventListener("click", function() {
 	newOutputOne.setAttribute("id", `outputMainSection${numberOfRightSections}`);
 	newOutputOne.setAttribute("name", `outputMainSection${numberOfRightSections}`);
 	newOutputOne.innerHTML = `${defaultSectionHeading} ${numberOfRightSections + 1}`;
+	newOutputOne.style.fontWeight = "bold";
 	newOutputDiv.appendChild(newOutputOne);
 
 	const newDivLineControllerTwo = document.createElement("div");
@@ -841,6 +846,8 @@ userInputsMainDynamic.addEventListener("click", function(e) {
 				const newEntry = document.createElement("p");
 				newEntry.setAttribute("id", `outputMainEntry${i}-${numberOfRightSubSections[i]}`);
 				newEntry.setAttribute("name", `outputMainEntry${i}-${numberOfRightSubSections[i]}`);
+				newEntry.style.fontWeight = "bold";
+				newEntry.style.whiteSpace = "pre-line";
 				newEntry.innerHTML = `${defaultEntry} ${i + 1}-${numberOfRightSubSections[i] + 1}`;
 				newOutputDivSub.appendChild(newEntry);
 
@@ -881,7 +888,7 @@ userInputsMainDynamic.addEventListener("click", function(e) {
 window.addEventListener("load", function() {
 	document.querySelector("input[type='file']").addEventListener("change", function() {
 		if (this.files && this.files[0]) {
-			const img = document.querySelector("img");
+			const img = document.getElementById("myImg");
 			const reader = new FileReader(); //FileReader is used instead of URL.createObjectURL since the latter is blocked by the browser upon download
 			reader.onload = (e) => {
 				img.src = e.target.result;
@@ -918,15 +925,23 @@ function convertHTMLToPDF(e) {
 
 	doc.addFileToVFS("merriweather.ttf", merriweatherB64);
 	doc.addFont("merriweather.ttf", "Merriweather", "normal");
+	doc.addFileToVFS("merriweather-900.ttf", merriweatherBoldB64);
+	doc.addFont("merriweather-900.ttf", "Merriweather", "bold");
 
 	doc.addFileToVFS("open-sans.ttf", openSansB64);
 	doc.addFont("open-sans.ttf", "Open Sans", "normal");
+	doc.addFileToVFS("open-sans-800.ttf", openSansBoldB64);
+	doc.addFont("open-sans-800.ttf", "Open Sans", "bold");
 
 	doc.addFileToVFS("roboto-mono.ttf", robotoMonoB64);
 	doc.addFont("roboto-mono.ttf", "Roboto Mono", "normal");
+	doc.addFileToVFS("roboto-mono-700.ttf", robotoMonoBoldB64);
+	doc.addFont("roboto-mono-700.ttf", "Roboto Mono", "bold");
 
 	doc.addFileToVFS("arial.ttf", arialB64);
 	doc.addFont("arial.ttf", "Arial", "normal");
+	doc.addFileToVFS("arial-bold.ttf", arialBoldB64);
+	doc.addFont("arial-bold.ttf", "Arial", "bold");
 	
 	const pdfjs = document.querySelector('#deploy');
 	
