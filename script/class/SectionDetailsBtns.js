@@ -38,22 +38,28 @@ class SectionDetailsBtns extends PrimaryElements {
 
         const newInputBtnTwo = document.createElement("button");
         newInputBtnTwo.setAttribute("id", `inputDetailAddSubheadingBtn${this.iElementId}`);
+        newInputBtnTwo.setAttribute("class", `addBtn`);
         const newInputBtnTwoInner = document.createElement("b");
         newInputBtnTwoInner.setAttribute("id", `inputDetailAddSubheadingBtnInner${this.iElementId}`);
+        newInputBtnTwoInner.setAttribute("class", `addBtnTxt`);
         newInputBtnTwoInner.innerHTML = "Add subheading";
         newInputBtnTwo.appendChild(newInputBtnTwoInner);
 
         const newInputBtnThree = document.createElement("button");
         newInputBtnThree.setAttribute("id", `inputDetailAddListItemsBtn${this.iElementId}`);
+        newInputBtnThree.setAttribute("class", `addBtn`);
         const newInputBtnThreeInner = document.createElement("b");
         newInputBtnThreeInner.setAttribute("id", `inputDetailAddListItemsBtnInner${this.iElementId}`);
+        newInputBtnThreeInner.setAttribute("class", `addBtnTxt`);
         newInputBtnThreeInner.innerHTML = "Add list items";
         newInputBtnThree.appendChild(newInputBtnThreeInner);
 
         const newInputBtnFour = document.createElement("button");
         newInputBtnFour.setAttribute("id", `inputDetailAddFreeTextBtn${this.iElementId}`);
+        newInputBtnFour.setAttribute("class", `addBtn`);
         const newInputBtnFourInner = document.createElement("b");
         newInputBtnFourInner.setAttribute("id", `inputDetailAddFreeTextBtnInner${this.iElementId}`);
+        newInputBtnFourInner.setAttribute("class", `addBtnTxt`);
         newInputBtnFourInner.innerHTML = "Add free text";
         newInputBtnFour.appendChild(newInputBtnFourInner);
 
@@ -74,7 +80,7 @@ class SectionDetailsBtns extends PrimaryElements {
         const newOutputOne = document.createElement("h3");
         newOutputOne.setAttribute("id", `outputDetailSection${this.iElementId}`);
         newOutputOne.setAttribute("name", `outputDetailSection${this.iElementId}`);
-        newOutputOne.innerHTML = `${this.sDefaultSectionHeading} ${this.iLeftSections + 1}`;
+        newOutputOne.innerHTML = `${this.sDefaultSectionHeading}`;
         newOutputOne.style.textDecoration = "underline";
 
         newOutputDiv.appendChild(newOutputOne);

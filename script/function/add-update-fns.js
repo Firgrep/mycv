@@ -1,16 +1,16 @@
 // -- Details side related --
 function updateBtnsDetails () {
-    if (numberOfLeftSections >= maxNumberOfLeftSections) {
-		addSectionDetailsBtn.setAttribute("disabled", "");
+    if (iLeftSections >= I_MAX_LEFT_SECTIONS) {
+		O_ADD_SECTION_DETAILS_BTN.setAttribute("disabled", "");
 	} else {
-        addSectionDetailsBtn.removeAttribute("disabled");
+        O_ADD_SECTION_DETAILS_BTN.removeAttribute("disabled");
     }
 }
 
 function addSectionDetail () {
     const _oSectionDetailOptions = {
-		elementId: idNumber,
-		numberOfLeftSections: numberOfLeftSections,
+		elementId: iDetailsId,
+		numberOfLeftSections: iLeftSections,
 		elementInputParent: O_USER_INPUTS_DETAILS_DYNAMIC,
 		elementInputEnd: O_USER_INPUTS_DETAILS_END,
 		elementOutputParent: O_USER_OUTPUTS_DETAILS_DYNAMIC,
@@ -21,53 +21,53 @@ function addSectionDetail () {
 
 	const newSectionDetailBtns = new SectionDetailsBtns(_oSectionDetailOptions);
 	newSectionDetailBtns.createHtml();
-	idNumber += 1;
-	numberOfLeftSections += 1;
+	iDetailsId += 1;
+	iLeftSections += 1;
     updateBtnsDetails();
 }
 
 function addSubheadingDetail (parentInputNode, endInputNode, parentOutput) {
     const _oOptions = {
-		elementId: idNumber,
+		elementId: iDetailsId,
 		elementInputParent: parentInputNode,
 		elementInputEnd: endInputNode,
 		elementOutputParent: parentOutput,
-		defaultSectionHeading: defaultSectionSubHeading
+		defaultSectionHeading: S_DEFAULT_SUBHEADING
 	}
 
 	const newSubheading = new DetailsSubheading(_oOptions);
 	newSubheading.createHtml();
-	idNumber += 1;
+	iDetailsId += 1;
     updateBtnsDetails();
 }
 
 function addListItemDetail (parentInputNode, endInputNode, parentOutput) {
     const _oOptions = {
-		elementId: idNumber,
+		elementId: iDetailsId,
 		elementInputParent: parentInputNode,
 		elementInputEnd: endInputNode,
 		elementOutputParent: parentOutput,
-		defaultListItem: defaultListItem
+		defaultListItem: S_DEFAULT_LIST_ITEM
 	}
 
 	const newListItem = new DetailsListItem(_oOptions);
 	newListItem.createHtml();
-	idNumber += 1;
+	iDetailsId += 1;
     updateBtnsDetails();
 }
 
 function addFreeText (parentInputNode, endInputNode, parentOutput) {
     const _oOptions = {
-		elementId: idNumber,
+		elementId: iDetailsId,
 		elementInputParent: parentInputNode,
 		elementInputEnd: endInputNode,
 		elementOutputParent: parentOutput,
-		defaultFreeText: defaultFreeText
+		defaultFreeText: S_DEFAULT_FREE_TEXT
 	}
 
 	const newFreeText = new DetailsFreeText(_oOptions);
 	newFreeText.createHtml();
-	idNumber += 1;
+	iDetailsId += 1;
     updateBtnsDetails();
 }
 

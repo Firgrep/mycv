@@ -1,7 +1,7 @@
 function dynamicBtnControlDetails (e) {
     // Buttons listener
 	if (e.target.nodeName === "BUTTON" || e.target.nodeName === "B") {
-		for (let i = 0; i < idNumber + 1; i++) {
+		for (let i = 0; i < iDetailsId + 1; i++) {
 			
 			if (e.target === document.getElementById(`inputDetailRemoveBtn${i}`)
 				|| e.target === document.getElementById(`inputDetailRemoveBtnInner${i}`)) 
@@ -12,7 +12,7 @@ function dynamicBtnControlDetails (e) {
 					inputDivDelete.removeChild(inputDivDelete.lastChild);
 				};
 				if (inputDivDelete.getAttribute("customtype") === "section") {
-					numberOfLeftSections-= 1;
+					iLeftSections-= 1;
 				}
 				inputDivDelete.remove();
 

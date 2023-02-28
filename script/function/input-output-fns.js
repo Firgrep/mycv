@@ -1,3 +1,7 @@
+// -----------------------------------------
+// ---  DOM manipulation: text (I/O)     ---
+// -----------------------------------------
+
 function updateInputOutputPrimitive (input, output) {
 	if (input.value === "") {
 		output.innerHTML = "";
@@ -8,12 +12,19 @@ function updateInputOutputPrimitive (input, output) {
 	}
 };
 
+function changeName() {
+	document.getElementById("usernameOut").innerHTML = document.getElementById("usernameIn").value;
+    if(document.getElementById("usernameIn").value === "") {
+        document.getElementById("usernameOut").innerHTML = O_OUTPUT_NAME;
+    }
+};
+
 function updateInputOutputDetails (e) {
     if (e.target && e.target.nodeName == "INPUT" || e.target && e.target.nodeName == "TEXTAREA") { 
-		for (let i = 0; i < idNumber; i++) {
+		for (let i = 0; i < iDetailsId; i++) {
 			if (document.getElementById(`inputDetailSection${i}`)) {
 				if (document.getElementById(`inputDetailSection${i}`).value === "") {
-				document.getElementById(`outputDetailSection${i}`).innerHTML = `${defaultSectionHeading}`;
+				document.getElementById(`outputDetailSection${i}`).innerHTML = `${S_DEFAULT_SECTION_HEADING}`;
 				} else {
 				document.getElementById(`outputDetailSection${i}`).innerHTML 
 				= document.getElementById(`inputDetailSection${i}`).value;
@@ -21,7 +32,7 @@ function updateInputOutputDetails (e) {
 			} 
 			if (document.getElementById(`inputDetailSubSection${i}`)) {
 				if (document.getElementById(`inputDetailSubSection${i}`).value === "") {
-					document.getElementById(`outputDetailSubSection${i}`).innerHTML = `${defaultSectionSubHeading}`;
+					document.getElementById(`outputDetailSubSection${i}`).innerHTML = `${S_DEFAULT_SUBHEADING}`;
 				} else {
 					document.getElementById(`outputDetailSubSection${i}`).innerHTML 
 					= document.getElementById(`inputDetailSubSection${i}`).value;
@@ -29,7 +40,7 @@ function updateInputOutputDetails (e) {
 			}
 			if (document.getElementById(`inputDetailListItemLeft${i}`)) {
 				if (document.getElementById(`inputDetailListItemLeft${i}`).value === "") {
-				document.getElementById(`outputDetailListItemLeft${i}`).innerHTML = `${defaultListItem}`;
+				document.getElementById(`outputDetailListItemLeft${i}`).innerHTML = `${S_DEFAULT_LIST_ITEM}`;
 				} else {
 					document.getElementById(`outputDetailListItemLeft${i}`).innerHTML 
 					= document.getElementById(`inputDetailListItemLeft${i}`).value;
@@ -44,7 +55,7 @@ function updateInputOutputDetails (e) {
 			}
 			if (document.getElementById(`inputDetailFreeText${i}`)) {
 				if (document.getElementById(`inputDetailFreeText${i}`).value === "") {
-					document.getElementById(`outputDetailFreeText${i}`).innerHTML = `${defaultFreeText}`;
+					document.getElementById(`outputDetailFreeText${i}`).innerHTML = `${S_DEFAULT_FREE_TEXT}`;
 				} else {
 					document.getElementById(`outputDetailFreeText${i}`).innerHTML 
 						= document.getElementById(`inputDetailFreeText${i}`).value;

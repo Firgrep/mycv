@@ -54,8 +54,10 @@ class SectionMainBtns extends PrimaryElements {
         
         const newInputBtnTwo = document.createElement("button");
         newInputBtnTwo.setAttribute("id", `inputMainAddEntryBtn${this.iElementId}`);
+        newInputBtnTwo.setAttribute("class", `addBtn`);
         const newInputBtnTwoInner = document.createElement("b");
         newInputBtnTwoInner.setAttribute("id", `inputMainAddEntryBtnInner${this.iElementId}`);
+        newInputBtnTwoInner.setAttribute("class", "addBtnTxt");
         newInputBtnTwoInner.innerHTML = "Add entry";
         newInputBtnTwo.appendChild(newInputBtnTwoInner);
 
@@ -81,7 +83,7 @@ class SectionMainBtns extends PrimaryElements {
         const newOutputOne = document.createElement("h3");
         newOutputOne.setAttribute("id", `outputMainSection${this.iElementId}`);
         newOutputOne.setAttribute("name", `outputMainSection${this.iElementId}`);
-        newOutputOne.innerHTML = `${this.sDefaultSectionHeading} ${this.iSections + 1}`;
+        newOutputOne.innerHTML = `${this.sDefaultSectionHeading}`;
         newOutputOne.style.fontWeight = "bold";
 
         const newDivLineControllerTwo = document.createElement("div");
