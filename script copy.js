@@ -11,6 +11,8 @@ const defaultFreeText = "Free text";
 const defaultEntry = "Entry";
 const sectionMarginTop = "10px";
 
+let idNumber = 0;
+
 let numberOfLeftSections = 0;
 let numberOfLeftSubSections = Array.from(Array(maxNumberOfLeftSections), () => 0);
 let numberOfRightSections = 0;
@@ -193,59 +195,62 @@ inputDetailsKey.addEventListener("input", () => fillHTML(inputDetailsKey, output
 
 addSectionDetailsBtn.addEventListener("click", function() {
 	// Create userInputs side HTML elements
-	const newInputDiv = document.createElement("div");
-	newInputDiv.setAttribute("class", "miniBlock");
-	newInputDiv.setAttribute("id", `inputDetailAutoMiniDiv${numberOfLeftSections}`);
+	// const newInputDiv = document.createElement("div");
+	// newInputDiv.setAttribute("class", "miniBlock");
+	// newInputDiv.setAttribute("id", `inputDetailAutoMiniDiv${numberOfLeftSections}`);
 
-	const newInputOne = document.createElement("input");
-	newInputOne.setAttribute("id", `inputDetailSection${numberOfLeftSections}`);
-	newInputOne.setAttribute("name", `inputDetailSection${numberOfLeftSections}`);
-	newInputOne.setAttribute("type", "text");
-	newInputOne.setAttribute("placeholder", "Section heading");
+	// const newInputOne = document.createElement("input");
+	// newInputOne.setAttribute("id", `inputDetailSection${numberOfLeftSections}`);
+	// newInputOne.setAttribute("name", `inputDetailSection${numberOfLeftSections}`);
+	// newInputOne.setAttribute("type", "text");
+	// newInputOne.setAttribute("placeholder", "Section heading");
 
-	const newInputBreakOne = document.createElement("br");
-	newInputBreakOne.setAttribute("id", `newInputBreakOne${numberOfLeftSections}`)
-	const newInputBreakTwo = document.createElement("br");
-	newInputBreakTwo.setAttribute("id", `newInputBreakTwo${numberOfLeftSections}`)
+	// const newInputBreakOne = document.createElement("br");
+	// newInputBreakOne.setAttribute("id", `newInputBreakOne${numberOfLeftSections}`)
+	// const newInputBreakTwo = document.createElement("br");
+	// newInputBreakTwo.setAttribute("id", `newInputBreakTwo${numberOfLeftSections}`)
 
-	const newInputBtnOne = document.createElement("button");
-	newInputBtnOne.setAttribute("id", `inputDetailRemoveBtn${numberOfLeftSections}`);
-	newInputBtnOne.setAttribute("disabled", "");
-	const newInputBtnOneInner = document.createElement("b");
-	newInputBtnOneInner.setAttribute("id", `inputDetailRemoveBtnInner${numberOfLeftSections}`);
-	newInputBtnOneInner.innerHTML = "Remove element";
-	newInputBtnOne.appendChild(newInputBtnOneInner);
+	// const newInputBtnOne = document.createElement("button");
+	// newInputBtnOne.setAttribute("id", `inputDetailRemoveBtn${numberOfLeftSections}`);
+	// newInputBtnOne.setAttribute("disabled", "");
+	// const newInputBtnOneInner = document.createElement("b");
+	// newInputBtnOneInner.setAttribute("id", `inputDetailRemoveBtnInner${numberOfLeftSections}`);
+	// newInputBtnOneInner.innerHTML = "Remove element";
+	// newInputBtnOne.appendChild(newInputBtnOneInner);
 
-	const newInputBtnTwo = document.createElement("button");
-	newInputBtnTwo.setAttribute("id", `inputDetailAddSubheadingBtn${numberOfLeftSections}`);
-	const newInputBtnTwoInner = document.createElement("b");
-	newInputBtnTwoInner.setAttribute("id", `inputDetailAddSubheadingBtnInner${numberOfLeftSections}`);
-	newInputBtnTwoInner.innerHTML = "Add subheading";
-	newInputBtnTwo.appendChild(newInputBtnTwoInner);
+	// const newInputBtnTwo = document.createElement("button");
+	// newInputBtnTwo.setAttribute("id", `inputDetailAddSubheadingBtn${numberOfLeftSections}`);
+	// const newInputBtnTwoInner = document.createElement("b");
+	// newInputBtnTwoInner.setAttribute("id", `inputDetailAddSubheadingBtnInner${numberOfLeftSections}`);
+	// newInputBtnTwoInner.innerHTML = "Add subheading";
+	// newInputBtnTwo.appendChild(newInputBtnTwoInner);
 
-	const newInputBtnThree = document.createElement("button");
-	newInputBtnThree.setAttribute("id", `inputDetailAddListItemsBtn${numberOfLeftSections}`);
-	const newInputBtnThreeInner = document.createElement("b");
-	newInputBtnThreeInner.setAttribute("id", `inputDetailAddListItemsBtnInner${numberOfLeftSections}`);
-	newInputBtnThreeInner.innerHTML = "Add list items";
-	newInputBtnThree.appendChild(newInputBtnThreeInner);
+	// const newInputBtnThree = document.createElement("button");
+	// newInputBtnThree.setAttribute("id", `inputDetailAddListItemsBtn${numberOfLeftSections}`);
+	// const newInputBtnThreeInner = document.createElement("b");
+	// newInputBtnThreeInner.setAttribute("id", `inputDetailAddListItemsBtnInner${numberOfLeftSections}`);
+	// newInputBtnThreeInner.innerHTML = "Add list items";
+	// newInputBtnThree.appendChild(newInputBtnThreeInner);
 
-	const newInputBtnFour = document.createElement("button");
-	newInputBtnFour.setAttribute("id", `inputDetailAddFreeTextBtn${numberOfLeftSections}`);
-	const newInputBtnFourInner = document.createElement("b");
-	newInputBtnFourInner.setAttribute("id", `inputDetailAddFreeTextBtnInner${numberOfLeftSections}`);
-	newInputBtnFourInner.innerHTML = "Add free text";
-	newInputBtnFour.appendChild(newInputBtnFourInner);
+	// const newInputBtnFour = document.createElement("button");
+	// newInputBtnFour.setAttribute("id", `inputDetailAddFreeTextBtn${numberOfLeftSections}`);
+	// const newInputBtnFourInner = document.createElement("b");
+	// newInputBtnFourInner.setAttribute("id", `inputDetailAddFreeTextBtnInner${numberOfLeftSections}`);
+	// newInputBtnFourInner.innerHTML = "Add free text";
+	// newInputBtnFour.appendChild(newInputBtnFourInner);
 
-	newInputDiv.appendChild(newInputOne);
-	newInputDiv.appendChild(newInputBreakOne);
-	newInputDiv.appendChild(newInputBreakTwo);
-	newInputDiv.appendChild(newInputBtnOne);
-	newInputDiv.appendChild(newInputBtnTwo);
-	newInputDiv.appendChild(newInputBtnThree);
-	newInputDiv.appendChild(newInputBtnFour);
+	// newInputDiv.appendChild(newInputOne);
+	// newInputDiv.appendChild(newInputBreakOne);
+	// newInputDiv.appendChild(newInputBreakTwo);
+	// newInputDiv.appendChild(newInputBtnOne);
+	// newInputDiv.appendChild(newInputBtnTwo);
+	// newInputDiv.appendChild(newInputBtnThree);
+	// newInputDiv.appendChild(newInputBtnFour);
 
-	userInputsDetailsDynamic.insertBefore(newInputDiv, userInputsDetailsEnd);
+	const newSectionDetailBtns = new SectionDetailsBtns(userInputsDetailsDynamic, idNumber, userInputsDetailsEnd);
+	newSectionDetailBtns.createBtns();
+	idNumber += 1;
+	// userInputsDetailsDynamic.insertBefore(newInputDiv, userInputsDetailsEnd);
 
 	// Create userOutputs side HTML elements
 	const newOutputDiv = document.createElement("div");
@@ -424,6 +429,14 @@ userInputsDetailsDynamic.addEventListener("click", function(e) {
 				newInputSubSection.setAttribute("type", "text");
 				newInputSubSection.setAttribute("placeholder", "Section subheading");
 				newInputDivSub.appendChild(newInputSubSection);
+
+				const newInputBtnOne = document.createElement("button");
+				newInputBtnOne.setAttribute("id", `inputDetailSubRemove${i}-${numberOfLeftSubSections[i]}`);
+				const newInputBtnOneInner = document.createElement("b");
+				newInputBtnOneInner.setAttribute("id", `inputDetailSubRemoveInner${i}-${numberOfLeftSubSections[i]}`);
+				newInputBtnOneInner.innerHTML = "X";
+				newInputBtnOne.appendChild(newInputBtnOneInner);
+				newInputDivSub.appendChild(newInputBtnOne);
 
 				const parentOfInputSubSection = document.getElementById(`inputDetailAddSubheadingBtn${i}`).parentNode;
 				const beforeOfInputSubSection = document.getElementById(`newInputBreakTwo${i}`);

@@ -3,11 +3,21 @@
     <head>
         <title>myCV</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="./site.css" rel="stylesheet">
-        <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-        <script src="./encoded-ttf.js" defer></script>
-        <script src="./script.js" defer></script>
+        <link href="./static/site.css" rel="stylesheet">
+        <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+        <script src="./script/encoded-ttf.js" defer></script>
+        <script src="./script/class/PrimaryElements.js" defer></script>
+        <script src="./script/class/SectionDetailsBtns.js" defer></script>
+        <script src="./script/class/SectionMainBtns.js" defer></script>
+        <script src="./script/class/DetailsSubheading.js" defer></script>
+        <script src="./script/class/DetailsListItem.js" defer></script>
+        <script src="./script/class/DetailsFreeText.js" defer></script>
+        <script src="./script/class/MainEntry.js" defer></script>
+        <script src="./script/function/input-output-fns.js" defer></script>
+        <script src="./script/function/dynamic-ctrl-fns.js" defer></script>
+        <script src="./script/function/add-update-fns.js" defer></script>
+        <script src="./script/site-script-main.js" defer></script>
     </head>
     <body>
 
@@ -289,9 +299,6 @@
                                     </div>
                                 </div>
                                 <div class="miniBlock" id="userInputsDetailsSectionBtns">
-                                    <button id="removeSectionDetailsBtn" disabled>
-                                        <b>Remove section</b>
-                                    </button>
                                     <button id="addSectionDetailsBtn">
                                         <b>Add section</b>
                                     </button>
@@ -319,9 +326,6 @@
                                     </div>
                                 </div>
                                 <div class="miniBlock" id="userInputsMainSectionBtns">
-                                    <button id="removeSectionMainBtn" disabled>
-                                        <b>Remove section</b>
-                                    </button>
                                     <button id="addSectionMainBtn">
                                         <b>Add section</b>
                                     </button>
